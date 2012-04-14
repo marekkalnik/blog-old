@@ -601,6 +601,11 @@ var disqus_shortname = 'marekkalnik-blog';
                     {block:Description}<div class="description"><p>{Description}</p></div>{/block:Description}
                 </div>
             {/block:IfShowAboutWidget}
+            <h3>License</h3>
+            <div id="license" class="widget">
+                    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />
+                    All entries are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>.
+                    </div>
     		{block:IndexPage}{block:IfShowStuffILikeWidget}{block:Likes}
                 <h3><a href="http://www.tumblr.com/liked/by/{Name}">Stuff I like</a></h3>
                 <div id="likes_container" class="widget">
