@@ -2,9 +2,26 @@
 <!-- Minimal Theme designed by Artur Kim (http://arturkim.com) for Tumblr | version 1.5 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>{block:IndexPage}{Title}{/block:IndexPage}{block:SearchPage}Search results for: {SearchQuery}{/block:SearchPage}{block:PostSummary}{PostSummary}{/block:PostSummary}</title>
-    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    {block:Description}<meta name="description" content="{MetaDescription}" />
+    {block:IfGoogleAnalyticsID}
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30896963-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+{block:IfGoogleAnalyticsID}
+    {/block:Description}
     <link rel="shortcut icon" href="{Favicon}" />
     <link rel="apple-touch-icon" href="{PortraitURL-128}"/>
     <link rel="alternate" type="application/rss+xml" href="{RSS}" />
@@ -223,6 +240,13 @@
                     .post-content h3 a:focus, .post-content h3 a:hover, .post-content h3:active {
                         color: #dd3333;
                     }
+                .post-content h4
+                {
+                  font-size: 17px;
+                  margin-bottom: 8px;
+                  color: #777;
+                  font-weight: bold;
+                }
                 .post-content img {
                     margin-bottom: 20px;
                     padding: 10px;
@@ -661,8 +685,6 @@ var disqus_shortname = 'marekkalnik-blog';
     };
     </script>
     </div><!-- #wrapper -->
-
 {block:Twitter}<script type="text/javascript" src="/tweets.js"></script>{/block:Twitter}
-{block:IfGoogleAnalyticsID}<script type="text/javascript">var gaJsHost=(("https:"==document.location.protocol)?"https://ssl.":"http://www.");document.write(unescape("%3Cscript src='"+gaJsHost+"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try{var pageTracker=_gat._getTracker("{text:Google Analytics ID}");pageTracker._trackPageview()}catch(err){}</script>{block:IfGoogleAnalyticsID}
 </body>
 </html>
