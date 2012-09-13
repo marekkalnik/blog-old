@@ -1,7 +1,7 @@
 It's just a view. And it's just a configuration
 ===============================================
 
-Recently I've been working on improving an old data gathering project. The analys was
+Recently I've been working on improving an old data gathering project. The analyst was
 visiting the client, gathering the data and inserting it to the application. The data was
 then presented in a HTML table layout with a possibility to export it in PDF or Excel file
 format.
