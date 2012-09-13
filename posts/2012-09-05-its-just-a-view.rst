@@ -246,7 +246,7 @@ objects::
         }
     }
     
-The last thing to do, is to put all of this together, with some nice abstract class
+The last thing to do is to put all of this together, with some nice abstract class
 grouping the common methods. See this gist_ for complete implementation.
 
 .. _gist: https://gist.github.com/3710733
