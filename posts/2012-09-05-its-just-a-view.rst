@@ -6,7 +6,7 @@ visiting the client, gathering the data and inserting it to the application. The
 then presented in a HTML table layout with a possibility to export it in PDF or Excel file
 format.
 
-The client has requested a possibility to modifiy the colum names. Here's how it looked
+The client has requested a possibility to modify the column names. Here's how it looked
 like::
 
     --------------------------------------
@@ -16,7 +16,7 @@ like::
 Which was written as a standard combination of tr, tds and some text inside.
 
 Then I looked into the Excel file and I've seen another combination of tr and tds and text
-inside (which was not exactly the same event if it was meant to be).
+inside (which was not exactly the same even if it was meant to be).
 
 Here's a sample::
 
@@ -43,9 +43,9 @@ Here's a sample::
 
 After that a loop populated other rows.
 
-So need to display the same data, but in two completly different views and interfaces,
-with two completly different interfaces. How could we refactor that, keeping it simple, to
-avoid repeating ouerselves (and let client configure each colum name)?
+So need to display the same data, but in two completely different views and interfaces,
+with two completely different interfaces. How could we refactor that, keeping it simple, to
+avoid repeating ourselves (and let client configure each column name)?
 
 Lets do the obvious and modify the HTML by passing an array of items to it::
 
@@ -60,7 +60,7 @@ Lets do the obvious and modify the HTML by passing an array of items to it::
 
 Then I put the array in a Project object, accessible in both the Excel generator and the
 html template. Next, I slightly modified the excel generation (I pass over the getCellIds()
-method impelementation details, but it uses range('A', 'Z') if you have to ask)::
+method implementation details, but it uses range('A', 'Z') if you have to ask)::
 
     <?php
 
@@ -91,7 +91,7 @@ method impelementation details, but it uses range('A', 'Z') if you have to ask):
         }
     }
 
-As you can see, both these implementations have a side effect - they allow specyfing a
+As you can see, both these implementations have a side effect - they allow specifying a
 different number of columns, what makes them more generic. I'm happy with that because now
 another problem arises - sometimes we need to show all the columns and sometimes only few
 of them. So I need to modify those foreach loops that were displaying all four properties
@@ -206,9 +206,9 @@ samples. Lets see the easiest way to implement a per-row display function for bo
     }
 
 The Excel implementation needs some additional data, like the current worksheet and the
-row number. But both those informations can be stored in the class itself - the worksheet
+row number. But both those values can be stored in the class itself - the worksheet
 will not change between addRow calls - a table is displayed on one sheet only. And the row
-number depends on how many times the function has already been called. To acheive this we
+number depends on how many times the function has already been called. To achieve this we
 need to drop the "static" keyword (`static is bad`_, anyway) and deal with some full-fledged
 objects::
 
