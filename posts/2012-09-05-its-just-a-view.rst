@@ -1,12 +1,12 @@
 It's just a view. And it's just a configuration
 ===============================================
 
-Recently I've been working on improving an old data gathering project. The analyst was
-visiting the client, gathering the data and inserting it to the application. The data was
+Recently I've been working on improving an old data gathering project. The Client's employee was
+visiting the Client's client, gathering the data and inserting it to the application. The data was
 then presented in a HTML table layout with a possibility to export it in PDF or Excel file
 format.
 
-The client has requested a possibility to modify the column names. Here's how it looked
+The Client has requested a possibility to modify the column names. Here's what it looked
 like::
 
     --------------------------------------
@@ -43,11 +43,11 @@ Here's a sample::
 
 After that a loop populated other rows.
 
-So need to display the same data, but in two completely different views and interfaces,
-with two completely different interfaces. How could we refactor that, keeping it simple, to
-avoid repeating ourselves (and let client configure each column name)?
+So I needed to display the same data, but in two completely different views
+with two completely different interfaces. How could I refactor that, keeping it simple, to
+avoid repeating myself (and let Client configure each column name)?
 
-Lets do the obvious and modify the HTML by passing an array of items to it::
+Let's do the obvious and modify the HTML by passing an array of items to it::
 
     <?php
     $columnNames = array('id', 'question', 'response', 'comment');
@@ -59,7 +59,7 @@ Lets do the obvious and modify the HTML by passing an array of items to it::
     echo '</tr>';
 
 Then I put the array in a Project object, accessible in both the Excel generator and the
-html template. Next, I slightly modified the excel generation (I pass over the getCellIds()
+html template. Next, I slightly modified the Excel generation (I pass over the getCellIds
 method implementation details, but it uses range('A', 'Z') if you have to ask)::
 
     <?php
@@ -93,12 +93,12 @@ method implementation details, but it uses range('A', 'Z') if you have to ask)::
 
 As you can see, both these implementations have a side effect - they allow specifying a
 different number of columns, what makes them more generic. I'm happy with that because now
-another problem arises - sometimes we need to show all the columns and sometimes only few
+another problem arises - sometimes we need to show all the columns and sometimes only a few
 of them. So I need to modify those foreach loops that were displaying all four properties
 from my objects in collection and make them configurable. And, because I cannot forget
 about the DRY rule - I need the same configuration for my header generation.
 
-Lets do it on populateRows() method::
+Let's do it on populateRows() method::
 
     <?php
 
@@ -143,17 +143,17 @@ By converting the previous $columNames array to a multidimensional $columnConfig
         }
     }
 
-Now we can also use the 'name' element to generate column names. In a later refactoring,
-the $columnConfiguration array is a good candidate for an object - but we will focus on
-other more important things. This can be done when some more complex configuration options
+Now I can also use the 'name' element to generate columns' names. In a later refactoring,
+the $columnConfiguration array is a good candidate for an object - but I will focus on
+other, more important things. This can be done when some more complex configuration options
 will be needed.
 
-The client is now perfectly happy - the code is flexible enough to allow configuring a
+The Client is now perfectly happy - the code is flexible enough to allow configuring a
 column name and changing displayed columns. And that would be the end of the story -
 because we need to keep the code simple and avoid over-refactoring and
-over-architecturization. Acutally that's the code the client got. 
+over-architecturization. Acutally that's the code the Client got. 
 
-But there's still one theoretical problem left, so we can try to solve it. Lets see the
+But there's still one theoretical problem left, so we can try to solve it. Let's see the
 final implementation for row creation in the Excel and HTML view::
 
     <?php
@@ -174,14 +174,14 @@ final implementation for row creation in the Excel and HTML view::
         }
     }
 
-This is a clear duplication of logic - event if it's just few lines. Imagine that we
+This is a clear duplication of logic - even if it's just a few lines. Imagine that we
 rename the 'getter' key in column definition, or we want to pass a parameter to this
 function - we would have to modify it in two places. Or what if we wanted to give a grey
 background to every second row?
 
 To fix this, we need a simple data formatter. The best way to treat a tabular data is on a
-per-row basis, so we'll focus on this. That's the main difference, between the two code
-samples. Lets see the easiest way to implement a per-row display function for both cases::
+per-row basis, so we'll focus on this. That's the main difference between the two code
+samples. Let's see the easiest way to implement a per-row display function for both cases::
 
     <?php
 
@@ -207,7 +207,7 @@ samples. Lets see the easiest way to implement a per-row display function for bo
 
 The Excel implementation needs some additional data, like the current worksheet and the
 row number. But both those values can be stored in the class itself - the worksheet
-will not change between addRow calls - a table is displayed on one sheet only. And the row
+will not change between addRow calls, so a table is displayed on one sheet only. And the row
 number depends on how many times the function has already been called. To achieve this we
 need to drop the "static" keyword (`static is bad`_, anyway) and deal with some full-fledged
 objects::
