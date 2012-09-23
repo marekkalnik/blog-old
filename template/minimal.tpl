@@ -70,7 +70,7 @@
     table { border-collapse: collapse; border-spacing: 0; }
 
     /* GLOBAL ELEMENTS */
-    body { background: #fff; }
+    body { background: #fff; margin: 0 100px; }
     body, input, textarea { color: #000; font: 14px/20px "helvetica neue",helvetica,arial,sans-serif; }
     p, ul, ol, dd, pre { margin-bottom: 20px; }
     blockquote { border-left: 5px solid #ddd; color: #555; font-style: italic; margin-bottom: 20px; padding-left: 10px; }
@@ -96,7 +96,6 @@
         margin: 0 auto 3px;
         overflow: hidden;
         padding: 20px 0 10px;
-        width: 900px;
     }
         #header #pages {
             float: left;
@@ -138,7 +137,6 @@
         border-bottom: 1px solid #ccc;
         margin: 0 auto 3px;
         {block:IfNotHeaderImage}padding: 40px 0;{/block:IfNotHeaderImage}
-        width: 900px;
     }
         #header h1 a {
             color: #111;
@@ -154,18 +152,17 @@
             max-width: 900px;
         }
     #main {
+        position: relative;
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
         clear: both;
         margin: 0 auto 3px;
         overflow: hidden;
-        width: 900px;
     }
         #container {
             border-right: 1px solid #ccc;
-            float: left;
             min-height: 400px;
-            width: 580px;
+            margin-right: 319px;
         }
             .post-meta {
                 border-bottom: 1px solid #ccc;
@@ -349,7 +346,9 @@
                         text-decoration: none;
                     }
         #sidebar {
-            float: left;
+            position: absolute;
+            top: 0;
+            right: 0;
             padding-bottom: 30px;
             width: 319px;
         }
@@ -467,7 +466,6 @@
         clear: both;
         margin: 0 auto;
         overflow: hidden;
-        width: 900px;
     }
         #colophon {
             color: #555;
